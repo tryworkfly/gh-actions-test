@@ -10,7 +10,7 @@ jobs:
   build-and-deploy:
     name: Build and Deploy
     runs-on:
-    - linux
+    - ubuntu-latest
     needs: []
     steps:
     - name: Checkout
