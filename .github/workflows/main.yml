@@ -1,0 +1,25 @@
+name: Deploy to GitHub Pages
+run-name: Deploy to GitHub Pages
+permissions:
+  contents: write
+'on':
+  push:
+    branches:
+    - main
+jobs:
+  build-and-deploy:
+    name: Build and Deploy
+    runs-on:
+    - linux
+    needs: []
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4.2.0
+    - name: Install and Build
+      run: |-
+        npm ci
+        npm run build
+    - name: Deploy
+      uses: JamesIves/github-pages-deploy-action@v4.6.8
+      with:
+        folder: dist
